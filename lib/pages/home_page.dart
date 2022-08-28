@@ -103,7 +103,12 @@ class _HomePageState extends State<HomePage> {
             ),
             ListTile(
               onTap: () {
-                nextScreen(context, const ProfilePage());
+                nextScreen(
+                    context,
+                    ProfilePage(
+                      userName: userName,
+                      email: email,
+                    ));
               },
               contentPadding:
                   const EdgeInsets.symmetric(horizontal: 0, vertical: 0),
@@ -118,6 +123,7 @@ class _HomePageState extends State<HomePage> {
             ListTile(
               onTap: () async {
                 showDialog(
+                    barrierDismissible: false,
                     context: context,
                     builder: (Context) {
                       return AlertDialog(
@@ -163,6 +169,21 @@ class _HomePageState extends State<HomePage> {
           ],
         ),
       ),
+      body: groupList(),
+      floatingActionButton: FloatingActionButton(
+        backgroundColor: Theme.of(context).primaryColor,
+        elevation: 0,
+        onPressed: () {
+          popUpDialog(context);
+        },
+        child: Icon(
+          Icons.add,
+        ),
+      ),
     );
   }
+
+  popUpDialog(BuildContext context) {}
+
+  groupList() {}
 }
